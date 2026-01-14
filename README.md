@@ -1,28 +1,38 @@
 ## API для управления задачами
 
-### 1. Запуск Docker-контейнеров
+### 1. Настройка переменных окружения
+
+```bash
+cp .env.example .env
+```
+
+### 2. Запуск Docker-контейнеров
 
 ```bash
 docker compose up -d
 ```
 
-### 2. Настройка переменных окружения
-
-```bash
-cp src/.env.example src/.env
-```
-
-### 5. Установка зависимостей Laravel
+### 3. Установка зависимостей Laravel
 
 ```bash
 # Установка PHP зависимостей (если вы не устанавливали Laravel а он уже был в репозитории)
 docker exec app composer install
 
-# Установка npm зависимостей
-docker exec app npm i
+# Сгенерировать ключ приложения
+docker exec app php artisan key:generate
 
 # Применение миграций
 docker exec app php artisan migrate
+```
+
+### 4. Установка зависимостей npm зависимостей
+
+```bash
+# установка зависимостей
+docker exec app npm i
+
+# сборка проекта
+docker exec app npm run build
 ```
 
 ## Доступ к приложению
