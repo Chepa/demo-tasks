@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRequest;
-use App\Http\Requests\Task\UpdateRequest;
+use App\Http\Requests\Task\UpdateStatusRequest;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
 
@@ -48,11 +48,11 @@ class TasksController extends Controller
 
     /**
      * Обновление статуса задачи
-     * @param UpdateRequest $request
+     * @param UpdateStatusRequest $request
      * @param Task $task
      * @return JsonResponse
      */
-    public function update(UpdateRequest $request, Task $task): JsonResponse
+    public function update(UpdateStatusRequest $request, Task $task): JsonResponse
     {
         if ($task->user_id !== auth()->user()->id) {
             return response()->json([

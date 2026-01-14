@@ -4,12 +4,11 @@ namespace App\Http\Requests\Task;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateStatusRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'text' => ['sometimes', 'string', 'max:500'],
             'completed' => ['sometimes', 'boolean'],
         ];
     }
