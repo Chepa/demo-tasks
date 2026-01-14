@@ -43,4 +43,3 @@ docker exec app php artisan test
 
 ## OpenAPI документация
 http://localhost/swagger
-# demo-tasks
